@@ -7,36 +7,35 @@ using WindowsFormsApplication1.model;
 
 namespace WindowsFormsApplication1.controller
 {
-    class ServiceController
+    class ModelController
     {
-        private static readonly ServiceController serviceC = new ServiceController();
-        private static List<Service> services = new List<Service>();
+        private static readonly ModelController modelC = new ModelController();
+        private static List<Model> models = new List<Model>();
 
-        public static ServiceController ServiceC
+        public static ModelController ModelC
         {
             get
             {
-                return serviceC;
+                return modelC;
             }
         }
 
-        internal List<Service> Services
+        internal List<Model> Models
         {
             get
             {
-                return services;
+                return models;
             }
 
             set
             {
-                services = value;
+                models = value;
             }
         }
 
-
-        public Service search(int id)
+        public Model search(int id)
         {
-            foreach (Service c in Services)
+            foreach (Model c in models)
             {
                 if (c.Id == id)
                 {
@@ -46,11 +45,11 @@ namespace WindowsFormsApplication1.controller
             return null;
         }
 
-        public Service search(string name)
+        public Model search(string name)
         {
-            foreach (Service c in Services)
+            foreach (Model c in models)
             {
-                if (c.Name == name)
+                if (c.Name.Equals(name))
                 {
                     return c;
                 }
@@ -60,40 +59,33 @@ namespace WindowsFormsApplication1.controller
 
         public bool remove(int id)
         {
-            foreach (Service c in Services)
+            foreach (Model c in models)
             {
                 if (c.Id == id)
                 {
-                    Services.Remove(c);
+                    models.Remove(c);
                     return true;
                 }
             }
-            return false;
-        }
-
-        public bool remove(Service c)
-        {
-            if (Services.Remove(c))
-                return true;
             return false;
         }
 
         public bool remove(string name)
         {
-            foreach (Service c in Services)
+            foreach (Model c in models)
             {
-                if (c.Name == name)
+                if (c.Name.Equals(name))
                 {
-                    Services.Remove(c);
+                    models.Remove(c);
                     return true;
                 }
             }
             return false;
         }
 
-        public void add(Service service)
+        public void add(Model model)
         {
-            Services.Add(service);
+            models.Add(model);
         }
     }
 }

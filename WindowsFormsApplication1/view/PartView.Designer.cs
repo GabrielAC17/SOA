@@ -35,7 +35,7 @@
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.carCombo = new System.Windows.Forms.ComboBox();
+            this.modelCombo = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.yearText = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -103,13 +103,14 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "Modelo de carro:";
             // 
-            // carCombo
+            // modelCombo
             // 
-            this.carCombo.FormattingEnabled = true;
-            this.carCombo.Location = new System.Drawing.Point(151, 46);
-            this.carCombo.Name = "carCombo";
-            this.carCombo.Size = new System.Drawing.Size(263, 21);
-            this.carCombo.TabIndex = 7;
+            this.modelCombo.FormattingEnabled = true;
+            this.modelCombo.Location = new System.Drawing.Point(151, 46);
+            this.modelCombo.Name = "modelCombo";
+            this.modelCombo.Size = new System.Drawing.Size(263, 21);
+            this.modelCombo.TabIndex = 7;
+            this.modelCombo.SelectedIndexChanged += new System.EventHandler(this.carCombo_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -152,7 +153,7 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.yearText);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.carCombo);
+            this.Controls.Add(this.modelCombo);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
@@ -180,7 +181,7 @@
         private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox carCombo;
+        private System.Windows.Forms.ComboBox modelCombo;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox yearText;
         private System.Windows.Forms.Label label5;

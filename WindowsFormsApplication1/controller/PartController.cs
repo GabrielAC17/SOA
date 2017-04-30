@@ -70,6 +70,11 @@ namespace WindowsFormsApplication1.controller
             return false;
         }
 
+        public bool remove(Part p)
+        {
+            return parts.Remove(p);
+        }
+
         public bool remove(string name)
         {
             foreach (Part c in Parts)

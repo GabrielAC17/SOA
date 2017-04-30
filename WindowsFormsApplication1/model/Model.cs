@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1.model
 {
-    public class Car
+    public class Model
     {
-        private string name;
-        private Model model;
-        private DateTime year;
+        private String name;
         private int id;
 
         public string Name
@@ -23,32 +21,6 @@ namespace WindowsFormsApplication1.model
             set
             {
                 name = value;
-            }
-        }
-
-        public Model Model
-        {
-            get
-            {
-                return model;
-            }
-
-            set
-            {
-                model = value;
-            }
-        }
-
-        public DateTime Year
-        {
-            get
-            {
-                return year;
-            }
-
-            set
-            {
-                year = value;
             }
         }
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1.model
 {
-    class Service
+    public class Service
     {
         private string name;
         private float pricePerHour;

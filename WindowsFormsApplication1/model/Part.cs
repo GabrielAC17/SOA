@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace WindowsFormsApplication1.model
 {
-    class Part
+    public class Part
     {
         private string name;
-        private Car carModel;
+        private Model carModel;
         private DateTime year;
         private DateTime endYear;
         private float price;
@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1.model
             }
         }
 
-        internal Car CarModel
+        internal Model CarModel
         {
             get
             {

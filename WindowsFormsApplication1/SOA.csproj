@@ -33,6 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="ListViewPrinter, Version=2.7.1.31255, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\ObjectListView.2.7.1.5\lib\ListViewPrinter.dll</HintPath>
       <Private>True</Private>
@@ -42,6 +50,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -55,12 +64,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="controller\CarController.cs" />
+    <Compile Include="controller\ModelController.cs" />
     <Compile Include="controller\PartController.cs" />
     <Compile Include="controller\SelectedPartController.cs" />
     <Compile Include="controller\SelectedServiceController.cs" />
     <Compile Include="controller\ServiceController.cs" />
     <Compile Include="controller\Singleton.cs" />
     <Compile Include="model\Car.cs" />
+    <Compile Include="model\Model.cs" />
     <Compile Include="model\Part.cs" />
     <Compile Include="model\Service.cs" />
     <Compile Include="view\MainView.cs">

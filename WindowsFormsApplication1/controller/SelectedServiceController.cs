@@ -71,6 +71,13 @@ namespace WindowsFormsApplication1.controller
             return false;
         }
 
+        public bool remove(Service c)
+        {
+            if (Services.Remove(c))
+                return true;
+            return false;
+        }
+
         public bool remove(string name)
         {
             foreach (Service c in Services)

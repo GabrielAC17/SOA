@@ -36,17 +36,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.labelTotal = new System.Windows.Forms.Label();
             this.objectListServices = new BrightIdeasSoftware.ObjectListView();
+            this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.objectListSelectedServices = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.objectListParts = new BrightIdeasSoftware.ObjectListView();
-            this.objectListSelectedParts = new BrightIdeasSoftware.ObjectListView();
-            this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.objectListSelectedParts = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn9 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn10 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn11 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -78,7 +78,6 @@
             this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Selecione um veículo:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // buttonNewCar
             // 
@@ -118,7 +117,6 @@
             this.label2.Size = new System.Drawing.Size(142, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Valor total do orçamento: R$";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // labelTotal
             // 
@@ -138,11 +136,22 @@
             this.olvColumn4});
             this.objectListServices.Location = new System.Drawing.Point(229, 22);
             this.objectListServices.Name = "objectListServices";
-            this.objectListServices.Size = new System.Drawing.Size(245, 144);
+            this.objectListServices.Size = new System.Drawing.Size(267, 144);
             this.objectListServices.TabIndex = 11;
             this.objectListServices.UseCompatibleStateImageBehavior = false;
             this.objectListServices.View = System.Windows.Forms.View.Details;
-            this.objectListServices.SelectedIndexChanged += new System.EventHandler(this.objectListServices_SelectedIndexChanged);
+            // 
+            // olvColumn3
+            // 
+            this.olvColumn3.AspectName = "Name";
+            this.olvColumn3.Text = "Nome do serviço";
+            this.olvColumn3.Width = 153;
+            // 
+            // olvColumn4
+            // 
+            this.olvColumn4.AspectName = "PricePerHour";
+            this.olvColumn4.Text = "Preço por hora";
+            this.olvColumn4.Width = 89;
             // 
             // objectListSelectedServices
             // 
@@ -151,13 +160,12 @@
             this.objectListSelectedServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
             this.olvColumn2});
-            this.objectListSelectedServices.Location = new System.Drawing.Point(548, 22);
+            this.objectListSelectedServices.Location = new System.Drawing.Point(528, 22);
             this.objectListSelectedServices.Name = "objectListSelectedServices";
-            this.objectListSelectedServices.Size = new System.Drawing.Size(245, 144);
+            this.objectListSelectedServices.Size = new System.Drawing.Size(265, 144);
             this.objectListSelectedServices.TabIndex = 12;
             this.objectListSelectedServices.UseCompatibleStateImageBehavior = false;
             this.objectListSelectedServices.View = System.Windows.Forms.View.Details;
-            this.objectListSelectedServices.SelectedIndexChanged += new System.EventHandler(this.objectListSelectedServices_SelectedIndexChanged);
             // 
             // olvColumn1
             // 
@@ -185,53 +193,16 @@
             this.olvColumn6});
             this.objectListParts.Location = new System.Drawing.Point(229, 185);
             this.objectListParts.Name = "objectListParts";
-            this.objectListParts.Size = new System.Drawing.Size(245, 144);
+            this.objectListParts.Size = new System.Drawing.Size(267, 144);
             this.objectListParts.TabIndex = 13;
             this.objectListParts.UseCompatibleStateImageBehavior = false;
             this.objectListParts.View = System.Windows.Forms.View.Details;
-            // 
-            // objectListSelectedParts
-            // 
-            this.objectListSelectedParts.AllColumns.Add(this.olvColumn9);
-            this.objectListSelectedParts.AllColumns.Add(this.olvColumn10);
-            this.objectListSelectedParts.AllColumns.Add(this.olvColumn11);
-            this.objectListSelectedParts.AllColumns.Add(this.olvColumn12);
-            this.objectListSelectedParts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.olvColumn9,
-            this.olvColumn10,
-            this.olvColumn11,
-            this.olvColumn12});
-            this.objectListSelectedParts.Location = new System.Drawing.Point(548, 185);
-            this.objectListSelectedParts.Name = "objectListSelectedParts";
-            this.objectListSelectedParts.Size = new System.Drawing.Size(245, 144);
-            this.objectListSelectedParts.TabIndex = 14;
-            this.objectListSelectedParts.UseCompatibleStateImageBehavior = false;
-            this.objectListSelectedParts.View = System.Windows.Forms.View.Details;
-            // 
-            // olvColumn3
-            // 
-            this.olvColumn3.AspectName = "Name";
-            this.olvColumn3.Text = "Nome do serviço";
-            this.olvColumn3.Width = 153;
-            // 
-            // olvColumn4
-            // 
-            this.olvColumn4.AspectName = "PricePerHour";
-            this.olvColumn4.Text = "Preço por hora";
-            this.olvColumn4.Width = 89;
             // 
             // olvColumn5
             // 
             this.olvColumn5.AspectName = "Name";
             this.olvColumn5.Text = "Nome da peça";
             this.olvColumn5.Width = 86;
-            // 
-            // olvColumn6
-            // 
-            this.olvColumn6.AspectName = "EndYear";
-            this.olvColumn6.AspectToStringFormat = "{0:yyyy}";
-            this.olvColumn6.Text = "Ano Final";
-            this.olvColumn6.Width = 56;
             // 
             // olvColumn7
             // 
@@ -246,6 +217,31 @@
             this.olvColumn8.AspectToStringFormat = "{0:yyyy}";
             this.olvColumn8.Text = "Ano";
             this.olvColumn8.Width = 39;
+            // 
+            // olvColumn6
+            // 
+            this.olvColumn6.AspectName = "EndYear";
+            this.olvColumn6.AspectToStringFormat = "{0:yyyy}";
+            this.olvColumn6.Text = "Ano Final";
+            this.olvColumn6.Width = 56;
+            // 
+            // objectListSelectedParts
+            // 
+            this.objectListSelectedParts.AllColumns.Add(this.olvColumn9);
+            this.objectListSelectedParts.AllColumns.Add(this.olvColumn10);
+            this.objectListSelectedParts.AllColumns.Add(this.olvColumn11);
+            this.objectListSelectedParts.AllColumns.Add(this.olvColumn12);
+            this.objectListSelectedParts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.olvColumn9,
+            this.olvColumn10,
+            this.olvColumn11,
+            this.olvColumn12});
+            this.objectListSelectedParts.Location = new System.Drawing.Point(528, 185);
+            this.objectListSelectedParts.Name = "objectListSelectedParts";
+            this.objectListSelectedParts.Size = new System.Drawing.Size(265, 144);
+            this.objectListSelectedParts.TabIndex = 14;
+            this.objectListSelectedParts.UseCompatibleStateImageBehavior = false;
+            this.objectListSelectedParts.View = System.Windows.Forms.View.Details;
             // 
             // olvColumn9
             // 
@@ -282,6 +278,7 @@
             this.addServiceButton.TabIndex = 15;
             this.addServiceButton.Text = "+";
             this.addServiceButton.UseVisualStyleBackColor = true;
+            this.addServiceButton.Click += new System.EventHandler(this.addServiceButton_Click);
             // 
             // removeServiceButton
             // 
@@ -291,6 +288,7 @@
             this.removeServiceButton.TabIndex = 16;
             this.removeServiceButton.Text = "-";
             this.removeServiceButton.UseVisualStyleBackColor = true;
+            this.removeServiceButton.Click += new System.EventHandler(this.removeServiceButton_Click);
             // 
             // addPartButton
             // 
@@ -300,6 +298,7 @@
             this.addPartButton.TabIndex = 17;
             this.addPartButton.Text = "+";
             this.addPartButton.UseVisualStyleBackColor = true;
+            this.addPartButton.Click += new System.EventHandler(this.addPartButton_Click);
             // 
             // removePartButton
             // 
@@ -309,6 +308,7 @@
             this.removePartButton.TabIndex = 18;
             this.removePartButton.Text = "-";
             this.removePartButton.UseVisualStyleBackColor = true;
+            this.removePartButton.Click += new System.EventHandler(this.removePartButton_Click);
             // 
             // MainForm
             // 

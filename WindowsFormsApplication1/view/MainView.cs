@@ -14,6 +14,8 @@ namespace WindowsFormsApplication1
 {
     public partial class MainForm : Form
     {
+        private List<Part> selectedParts = new List<Part>();
+
         public MainForm()
         {
             InitializeComponent();
@@ -23,28 +25,40 @@ namespace WindowsFormsApplication1
         {
             comboCars.DataSource = CarController.CarC.Cars;
             comboCars.DisplayMember = "Name";
-            comboCars.ValueMember = "Model";
+            comboCars.ValueMember = null;
             comboCars.SelectedIndex = -1;
 
             objectListServices.SetObjects(ServiceController.ServiceC.Services);
-            objectListParts.SetObjects(PartController.PartC.Parts);
+            updateParts();
             objectListSelectedParts.SetObjects(SelectedPartController.SelectedPartC.Parts);
             objectListSelectedServices.SetObjects(SelectedServiceController.SelectedServiceC.Services);
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void updateParts()
         {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
+            selectedParts.Clear();
+            SelectedPartController.SelectedPartC.Parts.Clear();
+            objectListSelectedParts.SetObjects(SelectedPartController.SelectedPartC.Parts);
+            Car carTemp = (Car)comboCars.SelectedValue;
+            if (carTemp != null)
+            {
+                foreach (Part p in PartController.PartC.Parts)
+                {
+                    if (String.Equals(carTemp.Model.Name, p.CarModel.Name) && (carTemp.Year >= p.Year && carTemp.Year <= p.EndYear))
+                    {
+                        selectedParts.Add(p);
+                    }
+                }
+            }
+            
+            objectListParts.SetObjects(selectedParts);
         }
 
         private void comboCars_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            updateParts();
+            Singleton.updateTotal();
+            labelTotal.Text = Singleton.Total.ToString();
         }
 
         private void buttonNewCar_Click(object sender, EventArgs e)
@@ -62,31 +76,86 @@ namespace WindowsFormsApplication1
             Singleton.openServiceWindow();
         }
 
-        private void listSelectedServices_SelectedIndexChanged(object sender, EventArgs e)
+
+
+        public void updateLists()
         {
-            
+            //Update ObjectListService
+            objectListServices.SetObjects(ServiceController.ServiceC.Services);
+
+            //Update ObjectListPart
+            updateParts();
+
+            //Update ObjectListSelectedPart
+            objectListSelectedParts.SetObjects(SelectedPartController.SelectedPartC.Parts);
+
+            //Update ObjectListSelectedServices
+            objectListSelectedServices.SetObjects(SelectedServiceController.SelectedServiceC.Services);
         }
 
-        private void objectListSelectedServices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void objectListServices_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public void updateView()
+        public void updateCars()
         {
             //Update comboCars
             comboCars.DataSource = null;
             comboCars.DataSource = CarController.CarC.Cars;
             comboCars.DisplayMember = "Name";
-            comboCars.ValueMember = "Model";
+            comboCars.ValueMember = null;
+        }
 
-            //Update ObjectListService
-            objectListServices.SetObjects(ServiceController.ServiceC.Services);
+        private void addServiceButton_Click(object sender, EventArgs e)
+        {
+            if (objectListServices.SelectedObjects != null)
+            {
+                foreach (Service o in objectListServices.SelectedObjects)
+                {
+                    SelectedServiceController.SelectedServiceC.add(o);
+                }
+                objectListSelectedServices.SetObjects(SelectedServiceController.SelectedServiceC.Services);
+                Singleton.updateTotal();
+                labelTotal.Text = Singleton.Total.ToString();
+            }
+        }
+
+        private void removeServiceButton_Click(object sender, EventArgs e)
+        {
+            if (objectListSelectedServices.SelectedObjects != null)
+            {
+                foreach (Service o in objectListSelectedServices.SelectedObjects)
+                {
+                    SelectedServiceController.SelectedServiceC.remove(o);
+                }
+                objectListSelectedServices.SetObjects(SelectedServiceController.SelectedServiceC.Services);
+                Singleton.updateTotal();
+                labelTotal.Text = Singleton.Total.ToString();
+            }
+        }
+
+        private void addPartButton_Click(object sender, EventArgs e)
+        {
+            if (objectListParts.SelectedObjects != null)
+            {
+                foreach (Part o in objectListParts.SelectedObjects)
+                {
+                    SelectedPartController.SelectedPartC.add(o);
+                }
+                objectListSelectedParts.SetObjects(SelectedPartController.SelectedPartC.Parts);
+                Singleton.updateTotal();
+                labelTotal.Text = Singleton.Total.ToString();
+            }
+        }
+
+        private void removePartButton_Click(object sender, EventArgs e)
+        {
+            if (objectListSelectedParts.SelectedObjects != null)
+            {
+                foreach (Part o in objectListSelectedParts.SelectedObjects)
+                {
+                    SelectedPartController.SelectedPartC.remove(o);
+                }
+                objectListSelectedParts.SetObjects(SelectedPartController.SelectedPartC.Parts);
+                Singleton.updateTotal();
+                labelTotal.Text = Singleton.Total.ToString();
+            }
         }
     }
 }

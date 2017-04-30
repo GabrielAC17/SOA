@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.controller;
+using WindowsFormsApplication1.model;
 
 namespace WindowsFormsApplication1.view
 {
@@ -25,12 +27,34 @@ namespace WindowsFormsApplication1.view
 
         private void PartView_Load(object sender, EventArgs e)
         {
-
+            UpdateView();
         }
 
         private void okButton_Click(object sender, EventArgs e)
         {
-
+            if (nomeText.Text != "" && yearText.Text != "" && endYearText.Text != "" 
+                && priceText.Text != "" && modelCombo.SelectedValue != null)
+            {
+                float price;
+                DateTime sYear;
+                DateTime eYear;
+                if (float.TryParse(priceText.Text, out price) &&
+                    DateTime.TryParseExact(yearText.Text,"yyyy", CultureInfo.InvariantCulture,DateTimeStyles.None, out sYear) &&
+                    DateTime.TryParseExact(endYearText.Text, "yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out eYear))
+                {
+                    Singleton.addPart(nomeText.Text,(Model) modelCombo.SelectedValue, sYear, eYear, price);
+                    Singleton.updateMainView();
+                    clearBoxes();
+                    Singleton.closePartWindow();
+                    return;
+                }
+                else
+                    MessageBox.Show("Dados inválidos", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Nenhum campo pode estar vazio!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void clearBoxes()
@@ -43,5 +67,21 @@ namespace WindowsFormsApplication1.view
                 }
             }
         }
+
+        private void carCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        public void UpdateView()
+        {
+            modelCombo.DataSource = null;
+            modelCombo.DataSource = ModelController.ModelC.Models;
+            modelCombo.ValueMember = null;
+            modelCombo.DisplayMember = "Name";
+            modelCombo.SelectedIndex = -1;
+        }
+
+
     }
 }
