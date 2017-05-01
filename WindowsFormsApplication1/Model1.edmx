@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Model1.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="Model1StoreContainer">
+    <EntitySet Name="CarSet" EntityType="Model1.Store.CarSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ModelSet" EntityType="Model1.Store.ModelSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="ServiceSet" EntityType="Model1.Store.ServiceSet" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PartSet" EntityType="Model1.Store.PartSet" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="ModelCar" Association="Model1.Store.ModelCar">
+      <End Role="Model" EntitySet="ModelSet" />
+      <End Role="Car" EntitySet="CarSet" />
+    </AssociationSet>
+    <AssociationSet Name="ModelPart" Association="Model1.Store.ModelPart">
+      <End Role="Model" EntitySet="ModelSet" />
+      <End Role="Part" EntitySet="PartSet" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="CarSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Year" Type="datetime" Nullable="false" />
+    <Property Name="Model_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ModelSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ServiceSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PricePerHour" Type="decimal" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PartSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Year" Type="datetime" Nullable="false" />
+    <Property Name="EndYear" Type="datetime" Nullable="false" />
+    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="Model_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="ModelCar">
+    <End Role="Model" Type="Model1.Store.ModelSet" Multiplicity="1" />
+    <End Role="Car" Type="Model1.Store.CarSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Car">
+        <PropertyRef Name="Model_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ModelPart">
+    <End Role="Model" Type="Model1.Store.ModelSet" Multiplicity="1" />
+    <End Role="Part" Type="Model1.Store.PartSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Model">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Part">
+        <PropertyRef Name="Model_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Model1" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="Model1Container" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CarSet" EntityType="Model1.Car" />
+          <EntitySet Name="ModelSet" EntityType="Model1.Model" />
+          <EntitySet Name="ServiceSet" EntityType="Model1.Service" />
+          <AssociationSet Name="ModelCar" Association="Model1.ModelCar">
+            <End Role="Model" EntitySet="ModelSet" />
+            <End Role="Car" EntitySet="CarSet" />
+          </AssociationSet>
+          <EntitySet Name="PartSet" EntityType="Model1.Part" />
+          <AssociationSet Name="ModelPart" Association="Model1.ModelPart">
+            <End Role="Model" EntitySet="ModelSet" />
+            <End Role="Part" EntitySet="PartSet" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Year" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Model" Relationship="Model1.ModelCar" FromRole="Car" ToRole="Model" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <NavigationProperty Name="Car" Relationship="Model1.ModelCar" FromRole="Model" ToRole="Car" />
+          <NavigationProperty Name="Part" Relationship="Model1.ModelPart" FromRole="Model" ToRole="Part" />
+        </EntityType>
+        <EntityType Name="Service">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="PricePerHour" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <Association Name="ModelCar">
+          <End Type="Model1.Model" Role="Model" Multiplicity="1" />
+          <End Type="Model1.Car" Role="Car" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Part">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Year" Type="DateTime" Nullable="false" />
+          <Property Name="EndYear" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="Model" Relationship="Model1.ModelPart" FromRole="Part" ToRole="Model" />
+          <Property Name="Price" Type="Decimal" Nullable="false" />
+        </EntityType>
+        <Association Name="ModelPart">
+          <End Type="Model1.Model" Role="Model" Multiplicity="1" />
+          <End Type="Model1.Part" Role="Part" Multiplicity="*" />
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Model1StoreContainer" CdmEntityContainer="Model1Container">
+    <EntitySetMapping Name="CarSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Car)">
+        <MappingFragment StoreEntitySet="CarSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ModelSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Model)">
+        <MappingFragment StoreEntitySet="ModelSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Service)">
+        <MappingFragment StoreEntitySet="ServiceSet">
+                <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PartSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Part)">
+        <MappingFragment StoreEntitySet="PartSet">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Year" ColumnName="Year" />
+          <ScalarProperty Name="EndYear" ColumnName="EndYear" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="ModelCar" TypeName="Model1.ModelCar" StoreEntitySet="CarSet">
+      <EndProperty Name="Model">
+        <ScalarProperty Name="Id" ColumnName="Model_Id" />
+      </EndProperty>
+      <EndProperty Name="Car">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ModelPart" TypeName="Model1.ModelPart" StoreEntitySet="PartSet">
+      <EndProperty Name="Model">
+        <ScalarProperty Name="Id" ColumnName="Model_Id" />
+      </EndProperty>
+      <EndProperty Name="Part">
+        <ScalarProperty Name="Id" ColumnName="Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
-using WindowsFormsApplication1.model;
 using WindowsFormsApplication1.view;
 
 namespace WindowsFormsApplication1.controller
@@ -12,7 +11,7 @@ namespace WindowsFormsApplication1.controller
     public sealed class Singleton
     {
         private static readonly Singleton instance = new Singleton();
-        private static double total = 0;
+        private static decimal total = 0;
 
         private static CarView carView;
         private static PartView partView;
@@ -29,7 +28,7 @@ namespace WindowsFormsApplication1.controller
             }
         }
 
-        public static double Total
+        public static decimal Total
         {
             get
             {
@@ -83,20 +82,22 @@ namespace WindowsFormsApplication1.controller
             Car car = new Car();
             car.Name = name;
             car.Year = year;
+            bool isExistent = true;
 
             Model m = ModelController.ModelC.search(model);
             if (m == null)
             {
                 m = new Model();
                 m.Name = model;
-                ModelController.ModelC.add(m);
+                isExistent = false;
+                //ModelController.ModelC.add(m);
             }
             car.Model = m;
 
-            CarController.CarC.add(car);
+            CarController.CarC.add(car, isExistent);
         }
 
-        public static void addService(string name, float price)
+        public static void addService(string name, decimal price)
         {
             Service service = new Service();
             service.Name = name;
@@ -105,11 +106,11 @@ namespace WindowsFormsApplication1.controller
             ServiceController.ServiceC.add(service);
         }
 
-        public static void addPart(string name,Model model, DateTime startYear, DateTime endYear, float price)
+        public static void addPart(string name,Model model, DateTime startYear, DateTime endYear, decimal price)
         {
             Part part = new Part();
             part.Name = name;
-            part.CarModel = model;
+            part.Model = model;
             part.Year = startYear;
             part.EndYear = endYear;
             part.Price = price;

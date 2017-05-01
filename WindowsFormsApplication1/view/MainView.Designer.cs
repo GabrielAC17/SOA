@@ -112,7 +112,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(630, 350);
+            this.label2.Location = new System.Drawing.Point(525, 350);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 13);
             this.label2.TabIndex = 9;
@@ -121,11 +121,12 @@
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
-            this.labelTotal.Location = new System.Drawing.Point(778, 350);
+            this.labelTotal.Location = new System.Drawing.Point(673, 350);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(13, 13);
             this.labelTotal.TabIndex = 10;
             this.labelTotal.Text = "0";
+            this.labelTotal.Click += new System.EventHandler(this.labelTotal_Click);
             // 
             // objectListServices
             // 
@@ -144,12 +145,14 @@
             // olvColumn3
             // 
             this.olvColumn3.AspectName = "Name";
+            this.olvColumn3.CellPadding = null;
             this.olvColumn3.Text = "Nome do serviço";
             this.olvColumn3.Width = 153;
             // 
             // olvColumn4
             // 
             this.olvColumn4.AspectName = "PricePerHour";
+            this.olvColumn4.CellPadding = null;
             this.olvColumn4.Text = "Preço por hora";
             this.olvColumn4.Width = 89;
             // 
@@ -170,6 +173,7 @@
             // olvColumn1
             // 
             this.olvColumn1.AspectName = "Name";
+            this.olvColumn1.CellPadding = null;
             this.olvColumn1.Text = "Nome do serviço";
             this.olvColumn1.Width = 150;
             // 
@@ -177,6 +181,7 @@
             // 
             this.olvColumn2.AspectName = "PricePerHour";
             this.olvColumn2.AspectToStringFormat = "{0:0.00}";
+            this.olvColumn2.CellPadding = null;
             this.olvColumn2.Text = "Preço por hora";
             this.olvColumn2.Width = 91;
             // 
@@ -201,6 +206,7 @@
             // olvColumn5
             // 
             this.olvColumn5.AspectName = "Name";
+            this.olvColumn5.CellPadding = null;
             this.olvColumn5.Text = "Nome da peça";
             this.olvColumn5.Width = 86;
             // 
@@ -208,6 +214,7 @@
             // 
             this.olvColumn7.AspectName = "Price";
             this.olvColumn7.AspectToStringFormat = "{0:0.00}";
+            this.olvColumn7.CellPadding = null;
             this.olvColumn7.Text = "Preço";
             this.olvColumn7.Width = 58;
             // 
@@ -215,6 +222,7 @@
             // 
             this.olvColumn8.AspectName = "Year";
             this.olvColumn8.AspectToStringFormat = "{0:yyyy}";
+            this.olvColumn8.CellPadding = null;
             this.olvColumn8.Text = "Ano";
             this.olvColumn8.Width = 39;
             // 
@@ -222,6 +230,7 @@
             // 
             this.olvColumn6.AspectName = "EndYear";
             this.olvColumn6.AspectToStringFormat = "{0:yyyy}";
+            this.olvColumn6.CellPadding = null;
             this.olvColumn6.Text = "Ano Final";
             this.olvColumn6.Width = 56;
             // 
@@ -246,6 +255,7 @@
             // olvColumn9
             // 
             this.olvColumn9.AspectName = "Name";
+            this.olvColumn9.CellPadding = null;
             this.olvColumn9.Text = "Nome da peça";
             this.olvColumn9.Width = 86;
             // 
@@ -253,6 +263,7 @@
             // 
             this.olvColumn10.AspectName = "Price";
             this.olvColumn10.AspectToStringFormat = "{0:0.00}";
+            this.olvColumn10.CellPadding = null;
             this.olvColumn10.Text = "Preço";
             this.olvColumn10.Width = 53;
             // 
@@ -260,6 +271,7 @@
             // 
             this.olvColumn11.AspectName = "Year";
             this.olvColumn11.AspectToStringFormat = "{0:yyyy}";
+            this.olvColumn11.CellPadding = null;
             this.olvColumn11.Text = "Ano";
             this.olvColumn11.Width = 39;
             // 
@@ -267,6 +279,7 @@
             // 
             this.olvColumn12.AspectName = "EndYear";
             this.olvColumn12.AspectToStringFormat = "{0:yyyy}";
+            this.olvColumn12.CellPadding = null;
             this.olvColumn12.Text = "Ano Final";
             this.olvColumn12.Width = 59;
             // 

@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Data.Entity;
 using System.Threading.Tasks;
-using WindowsFormsApplication1.model;
 
 namespace WindowsFormsApplication1.controller
 {
@@ -24,68 +24,46 @@ namespace WindowsFormsApplication1.controller
         {
             get
             {
-                return cars;
-            }
-
-            set
-            {
-                cars = value;
+                using (Model1Container model1 = new Model1Container())
+                {
+                    return model1.CarSet.
+                        Include(c => c.Model)
+                        .ToList<Car>();
+                }
             }
         }
 
         public Car search(int id)
         {
-            foreach(Car c in cars)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Id == id)
-                {
-                    return c;
-                }
+                return model1.CarSet
+                    .Include(c => c.Model)
+                    .Where(c => c.Id == id)
+                    .FirstOrDefault();
             }
-            return null;
         }
 
         public Car search(string name)
         {
-            foreach (Car c in cars)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Name == name)
-                {
-                    return c;
-                }
+                return model1.CarSet
+                    .Include(c => c.Model)
+                    .Where(c => c.Name == name)
+                    .FirstOrDefault();
             }
-            return null;
         }
 
-        public bool remove(int id)
+        public void add(Car car, bool isExistent)
         {
-            foreach (Car c in cars)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Id == id)
-                {
-                    cars.Remove(c);
-                    return true;
-                }
+                if (isExistent)
+                    model1.ModelSet.Attach(car.Model);
+                model1.CarSet.Add(car);
+                model1.SaveChanges();
             }
-            return false;
-        }
-
-        public bool remove(string name)
-        {
-            foreach (Car c in cars)
-            {
-                if (c.Name == name)
-                {
-                    cars.Remove(c);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public void add(Car car)
-        {
-            cars.Add(car);
         }
     }
 }

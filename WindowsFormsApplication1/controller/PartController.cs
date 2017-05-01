@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApplication1.model;
 
 namespace WindowsFormsApplication1.controller
 {
@@ -24,73 +24,45 @@ namespace WindowsFormsApplication1.controller
         {
             get
             {
-                return parts;
-            }
-
-            set
-            {
-                parts = value;
+                using (Model1Container model1 = new Model1Container())
+                {
+                    return model1.PartSet.
+                        Include(c => c.Model)
+                        .ToList<Part>();
+                }
             }
         }
 
         public Part search(int id)
         {
-            foreach (Part c in Parts)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Id == id)
-                {
-                    return c;
-                }
+                return model1.PartSet
+                    .Include(p => p.Model)
+                    .Where(c => c.Id == id)
+                    .FirstOrDefault();
             }
-            return null;
         }
 
         public Part search(string name)
         {
-            foreach (Part c in Parts)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Name == name)
-                {
-                    return c;
-                }
+                return model1.PartSet
+                    .Include(p => p.Model)
+                    .Where(c => c.Name == name)
+                    .FirstOrDefault();
             }
-            return null;
-        }
-
-        public bool remove(int id)
-        {
-            foreach (Part c in Parts)
-            {
-                if (c.Id == id)
-                {
-                    Parts.Remove(c);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool remove(Part p)
-        {
-            return parts.Remove(p);
-        }
-
-        public bool remove(string name)
-        {
-            foreach (Part c in Parts)
-            {
-                if (c.Name == name)
-                {
-                    Parts.Remove(c);
-                    return true;
-                }
-            }
-            return false;
         }
 
         public void add(Part part)
         {
-            Parts.Add(part);
+            using (Model1Container model1 = new Model1Container())
+            {
+                model1.ModelSet.Attach(part.Model);
+                model1.PartSet.Add(part);
+                model1.SaveChanges();
+            }
         }
     }
 }

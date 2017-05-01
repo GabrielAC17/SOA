@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApplication1.model;
 
 namespace WindowsFormsApplication1.controller
 {
@@ -24,68 +23,42 @@ namespace WindowsFormsApplication1.controller
         {
             get
             {
-                return models;
-            }
-
-            set
-            {
-                models = value;
+                using (Model1Container model1 = new Model1Container())
+                {
+                    return (from c in model1.ModelSet
+                            orderby c.Name
+                            select c).ToList<Model>();
+                }
             }
         }
 
         public Model search(int id)
         {
-            foreach (Model c in models)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Id == id)
-                {
-                    return c;
-                }
+                return model1.ModelSet
+                    .Where(c => c.Id == id)
+                    .FirstOrDefault();
             }
-            return null;
         }
 
         public Model search(string name)
         {
-            foreach (Model c in models)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Name.Equals(name))
-                {
-                    return c;
-                }
+                return model1.ModelSet
+                    .Where(c => c.Name == name)
+                    .FirstOrDefault();
             }
-            return null;
-        }
-
-        public bool remove(int id)
-        {
-            foreach (Model c in models)
-            {
-                if (c.Id == id)
-                {
-                    models.Remove(c);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool remove(string name)
-        {
-            foreach (Model c in models)
-            {
-                if (c.Name.Equals(name))
-                {
-                    models.Remove(c);
-                    return true;
-                }
-            }
-            return false;
         }
 
         public void add(Model model)
         {
-            models.Add(model);
+            using (Model1Container model1 = new Model1Container())
+            {
+                model1.ModelSet.Add(model);
+                model1.SaveChanges();
+            }
         }
     }
 }

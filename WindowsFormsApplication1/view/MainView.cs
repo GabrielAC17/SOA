@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.controller;
-using WindowsFormsApplication1.model;
 
 namespace WindowsFormsApplication1
 {
@@ -23,10 +22,10 @@ namespace WindowsFormsApplication1
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            comboCars.DataSource = CarController.CarC.Cars;
             comboCars.DisplayMember = "Name";
             comboCars.ValueMember = null;
             comboCars.SelectedIndex = -1;
+            comboCars.DataSource = CarController.CarC.Cars;
 
             objectListServices.SetObjects(ServiceController.ServiceC.Services);
             updateParts();
@@ -44,7 +43,7 @@ namespace WindowsFormsApplication1
             {
                 foreach (Part p in PartController.PartC.Parts)
                 {
-                    if (String.Equals(carTemp.Model.Name, p.CarModel.Name) && (carTemp.Year >= p.Year && carTemp.Year <= p.EndYear))
+                    if (String.Equals(carTemp.Model.Name, p.Model.Name) && (carTemp.Year >= p.Year && carTemp.Year <= p.EndYear))
                     {
                         selectedParts.Add(p);
                     }
@@ -156,6 +155,11 @@ namespace WindowsFormsApplication1
                 Singleton.updateTotal();
                 labelTotal.Text = Singleton.Total.ToString();
             }
+        }
+
+        private void labelTotal_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

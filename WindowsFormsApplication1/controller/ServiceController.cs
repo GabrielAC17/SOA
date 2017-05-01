@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApplication1.model;
 
 namespace WindowsFormsApplication1.controller
 {
@@ -24,76 +23,42 @@ namespace WindowsFormsApplication1.controller
         {
             get
             {
-                return services;
-            }
-
-            set
-            {
-                services = value;
+                using (Model1Container model1 = new Model1Container())
+                {
+                    return (from c in model1.ServiceSet
+                            orderby c.Name
+                            select c).ToList<Service>();
+                }
             }
         }
 
-
         public Service search(int id)
         {
-            foreach (Service c in Services)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Id == id)
-                {
-                    return c;
-                }
+                return model1.ServiceSet
+                    .Where(c => c.Id == id)
+                    .FirstOrDefault();
             }
-            return null;
         }
 
         public Service search(string name)
         {
-            foreach (Service c in Services)
+            using (Model1Container model1 = new Model1Container())
             {
-                if (c.Name == name)
-                {
-                    return c;
-                }
+                return model1.ServiceSet
+                    .Where(c => c.Name == name)
+                    .FirstOrDefault();
             }
-            return null;
-        }
-
-        public bool remove(int id)
-        {
-            foreach (Service c in Services)
-            {
-                if (c.Id == id)
-                {
-                    Services.Remove(c);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        public bool remove(Service c)
-        {
-            if (Services.Remove(c))
-                return true;
-            return false;
-        }
-
-        public bool remove(string name)
-        {
-            foreach (Service c in Services)
-            {
-                if (c.Name == name)
-                {
-                    Services.Remove(c);
-                    return true;
-                }
-            }
-            return false;
         }
 
         public void add(Service service)
         {
-            Services.Add(service);
+            using (Model1Container model1 = new Model1Container())
+            {
+                model1.ServiceSet.Add(service);
+                model1.SaveChanges();
+            }
         }
     }
 }

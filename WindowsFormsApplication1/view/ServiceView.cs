@@ -32,8 +32,8 @@ namespace WindowsFormsApplication1.view
         {
             if (nameText.Text != "" & priceText.Text != "")
             {
-                float price;
-                if (float.TryParse(priceText.Text, out price)){
+                decimal price;
+                if (decimal.TryParse(priceText.Text, out price)){
                     Singleton.addService(nameText.Text,price);
                     Singleton.updateMainView();
                     clearBoxes();

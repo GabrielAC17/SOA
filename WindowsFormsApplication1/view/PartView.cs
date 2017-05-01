@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApplication1.controller;
-using WindowsFormsApplication1.model;
 
 namespace WindowsFormsApplication1.view
 {
@@ -35,10 +34,10 @@ namespace WindowsFormsApplication1.view
             if (nomeText.Text != "" && yearText.Text != "" && endYearText.Text != "" 
                 && priceText.Text != "" && modelCombo.SelectedValue != null)
             {
-                float price;
+                decimal price;
                 DateTime sYear;
                 DateTime eYear;
-                if (float.TryParse(priceText.Text, out price) &&
+                if (decimal.TryParse(priceText.Text, out price) &&
                     DateTime.TryParseExact(yearText.Text,"yyyy", CultureInfo.InvariantCulture,DateTimeStyles.None, out sYear) &&
                     DateTime.TryParseExact(endYearText.Text, "yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out eYear))
                 {
