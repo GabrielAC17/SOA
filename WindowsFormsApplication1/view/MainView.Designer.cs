@@ -55,6 +55,8 @@
             this.removeServiceButton = new System.Windows.Forms.Button();
             this.addPartButton = new System.Windows.Forms.Button();
             this.removePartButton = new System.Windows.Forms.Button();
+            this.olvColumn13 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn14 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.objectListServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectListSelectedServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectListParts)).BeginInit();
@@ -64,7 +66,7 @@
             // comboCars
             // 
             this.comboCars.FormattingEnabled = true;
-            this.comboCars.Location = new System.Drawing.Point(12, 41);
+            this.comboCars.Location = new System.Drawing.Point(5, 38);
             this.comboCars.Name = "comboCars";
             this.comboCars.Size = new System.Drawing.Size(121, 21);
             this.comboCars.TabIndex = 0;
@@ -73,7 +75,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 22);
+            this.label1.Location = new System.Drawing.Point(2, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(113, 13);
             this.label1.TabIndex = 1;
@@ -81,7 +83,7 @@
             // 
             // buttonNewCar
             // 
-            this.buttonNewCar.Location = new System.Drawing.Point(12, 85);
+            this.buttonNewCar.Location = new System.Drawing.Point(5, 65);
             this.buttonNewCar.Name = "buttonNewCar";
             this.buttonNewCar.Size = new System.Drawing.Size(121, 23);
             this.buttonNewCar.TabIndex = 2;
@@ -91,7 +93,7 @@
             // 
             // buttonNewPart
             // 
-            this.buttonNewPart.Location = new System.Drawing.Point(12, 114);
+            this.buttonNewPart.Location = new System.Drawing.Point(5, 94);
             this.buttonNewPart.Name = "buttonNewPart";
             this.buttonNewPart.Size = new System.Drawing.Size(121, 23);
             this.buttonNewPart.TabIndex = 3;
@@ -101,7 +103,7 @@
             // 
             // buttonNewService
             // 
-            this.buttonNewService.Location = new System.Drawing.Point(12, 143);
+            this.buttonNewService.Location = new System.Drawing.Point(5, 123);
             this.buttonNewService.Name = "buttonNewService";
             this.buttonNewService.Size = new System.Drawing.Size(121, 23);
             this.buttonNewService.TabIndex = 4;
@@ -112,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(525, 350);
+            this.label2.Location = new System.Drawing.Point(480, 350);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(142, 13);
             this.label2.TabIndex = 9;
@@ -121,7 +123,7 @@
             // labelTotal
             // 
             this.labelTotal.AutoSize = true;
-            this.labelTotal.Location = new System.Drawing.Point(673, 350);
+            this.labelTotal.Location = new System.Drawing.Point(628, 350);
             this.labelTotal.Name = "labelTotal";
             this.labelTotal.Size = new System.Drawing.Size(13, 13);
             this.labelTotal.TabIndex = 10;
@@ -135,9 +137,9 @@
             this.objectListServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn3,
             this.olvColumn4});
-            this.objectListServices.Location = new System.Drawing.Point(229, 22);
+            this.objectListServices.Location = new System.Drawing.Point(132, 22);
             this.objectListServices.Name = "objectListServices";
-            this.objectListServices.Size = new System.Drawing.Size(267, 144);
+            this.objectListServices.Size = new System.Drawing.Size(319, 144);
             this.objectListServices.TabIndex = 11;
             this.objectListServices.UseCompatibleStateImageBehavior = false;
             this.objectListServices.View = System.Windows.Forms.View.Details;
@@ -163,9 +165,9 @@
             this.objectListSelectedServices.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn1,
             this.olvColumn2});
-            this.objectListSelectedServices.Location = new System.Drawing.Point(528, 22);
+            this.objectListSelectedServices.Location = new System.Drawing.Point(483, 22);
             this.objectListSelectedServices.Name = "objectListSelectedServices";
-            this.objectListSelectedServices.Size = new System.Drawing.Size(265, 144);
+            this.objectListSelectedServices.Size = new System.Drawing.Size(319, 144);
             this.objectListSelectedServices.TabIndex = 12;
             this.objectListSelectedServices.UseCompatibleStateImageBehavior = false;
             this.objectListSelectedServices.View = System.Windows.Forms.View.Details;
@@ -188,17 +190,19 @@
             // objectListParts
             // 
             this.objectListParts.AllColumns.Add(this.olvColumn5);
+            this.objectListParts.AllColumns.Add(this.olvColumn13);
             this.objectListParts.AllColumns.Add(this.olvColumn7);
             this.objectListParts.AllColumns.Add(this.olvColumn8);
             this.objectListParts.AllColumns.Add(this.olvColumn6);
             this.objectListParts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn5,
+            this.olvColumn13,
             this.olvColumn7,
             this.olvColumn8,
             this.olvColumn6});
-            this.objectListParts.Location = new System.Drawing.Point(229, 185);
+            this.objectListParts.Location = new System.Drawing.Point(132, 185);
             this.objectListParts.Name = "objectListParts";
-            this.objectListParts.Size = new System.Drawing.Size(267, 144);
+            this.objectListParts.Size = new System.Drawing.Size(319, 144);
             this.objectListParts.TabIndex = 13;
             this.objectListParts.UseCompatibleStateImageBehavior = false;
             this.objectListParts.View = System.Windows.Forms.View.Details;
@@ -237,17 +241,19 @@
             // objectListSelectedParts
             // 
             this.objectListSelectedParts.AllColumns.Add(this.olvColumn9);
+            this.objectListSelectedParts.AllColumns.Add(this.olvColumn14);
             this.objectListSelectedParts.AllColumns.Add(this.olvColumn10);
             this.objectListSelectedParts.AllColumns.Add(this.olvColumn11);
             this.objectListSelectedParts.AllColumns.Add(this.olvColumn12);
             this.objectListSelectedParts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.olvColumn9,
+            this.olvColumn14,
             this.olvColumn10,
             this.olvColumn11,
             this.olvColumn12});
-            this.objectListSelectedParts.Location = new System.Drawing.Point(528, 185);
+            this.objectListSelectedParts.Location = new System.Drawing.Point(483, 185);
             this.objectListSelectedParts.Name = "objectListSelectedParts";
-            this.objectListSelectedParts.Size = new System.Drawing.Size(265, 144);
+            this.objectListSelectedParts.Size = new System.Drawing.Size(319, 144);
             this.objectListSelectedParts.TabIndex = 14;
             this.objectListSelectedParts.UseCompatibleStateImageBehavior = false;
             this.objectListSelectedParts.View = System.Windows.Forms.View.Details;
@@ -285,7 +291,7 @@
             // 
             // addServiceButton
             // 
-            this.addServiceButton.Location = new System.Drawing.Point(502, 22);
+            this.addServiceButton.Location = new System.Drawing.Point(457, 22);
             this.addServiceButton.Name = "addServiceButton";
             this.addServiceButton.Size = new System.Drawing.Size(20, 23);
             this.addServiceButton.TabIndex = 15;
@@ -295,7 +301,7 @@
             // 
             // removeServiceButton
             // 
-            this.removeServiceButton.Location = new System.Drawing.Point(502, 51);
+            this.removeServiceButton.Location = new System.Drawing.Point(457, 51);
             this.removeServiceButton.Name = "removeServiceButton";
             this.removeServiceButton.Size = new System.Drawing.Size(20, 23);
             this.removeServiceButton.TabIndex = 16;
@@ -305,7 +311,7 @@
             // 
             // addPartButton
             // 
-            this.addPartButton.Location = new System.Drawing.Point(502, 185);
+            this.addPartButton.Location = new System.Drawing.Point(457, 185);
             this.addPartButton.Name = "addPartButton";
             this.addPartButton.Size = new System.Drawing.Size(20, 23);
             this.addPartButton.TabIndex = 17;
@@ -315,7 +321,7 @@
             // 
             // removePartButton
             // 
-            this.removePartButton.Location = new System.Drawing.Point(502, 215);
+            this.removePartButton.Location = new System.Drawing.Point(457, 214);
             this.removePartButton.Name = "removePartButton";
             this.removePartButton.Size = new System.Drawing.Size(20, 23);
             this.removePartButton.TabIndex = 18;
@@ -323,11 +329,23 @@
             this.removePartButton.UseVisualStyleBackColor = true;
             this.removePartButton.Click += new System.EventHandler(this.removePartButton_Click);
             // 
+            // olvColumn13
+            // 
+            this.olvColumn13.AspectName = "Model.Name";
+            this.olvColumn13.CellPadding = null;
+            this.olvColumn13.Text = "Modelo";
+            // 
+            // olvColumn14
+            // 
+            this.olvColumn14.AspectName = "Model.Name";
+            this.olvColumn14.CellPadding = null;
+            this.olvColumn14.Text = "Modelo";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 372);
+            this.ClientSize = new System.Drawing.Size(814, 372);
             this.Controls.Add(this.removePartButton);
             this.Controls.Add(this.addPartButton);
             this.Controls.Add(this.removeServiceButton);
@@ -386,6 +404,8 @@
         private System.Windows.Forms.Button removeServiceButton;
         private System.Windows.Forms.Button addPartButton;
         private System.Windows.Forms.Button removePartButton;
+        private BrightIdeasSoftware.OLVColumn olvColumn13;
+        private BrightIdeasSoftware.OLVColumn olvColumn14;
     }
 }
 
