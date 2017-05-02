@@ -11,7 +11,7 @@ namespace WindowsFormsApplication1.controller
     public sealed class Singleton
     {
         private static readonly Singleton instance = new Singleton();
-        private static decimal total = 0;
+        private static float total = 0;
 
         private static CarView carView;
         private static PartView partView;
@@ -28,7 +28,7 @@ namespace WindowsFormsApplication1.controller
             }
         }
 
-        public static decimal Total
+        public static float Total
         {
             get
             {
@@ -97,7 +97,7 @@ namespace WindowsFormsApplication1.controller
             CarController.CarC.add(car, isExistent);
         }
 
-        public static void addService(string name, decimal price)
+        public static void addService(string name, float price)
         {
             Service service = new Service();
             service.Name = name;
@@ -106,7 +106,7 @@ namespace WindowsFormsApplication1.controller
             ServiceController.ServiceC.add(service);
         }
 
-        public static void addPart(string name,Model model, DateTime startYear, DateTime endYear, decimal price)
+        public static void addPart(string name,Model model, DateTime startYear, DateTime endYear, float price)
         {
             Part part = new Part();
             part.Name = name;
@@ -133,12 +133,12 @@ namespace WindowsFormsApplication1.controller
 
             foreach(Part p in SelectedPartController.SelectedPartC.Parts)
             {
-                total += p.Price;
+                total += Convert.ToSingle(p.Price);
             }
 
             foreach(Service s in SelectedServiceController.SelectedServiceC.Services)
             {
-                total += s.PricePerHour;
+                total += Convert.ToSingle(s.PricePerHour);
             }
 
         }

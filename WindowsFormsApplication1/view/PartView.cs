@@ -34,10 +34,11 @@ namespace WindowsFormsApplication1.view
             if (nomeText.Text != "" && yearText.Text != "" && endYearText.Text != "" 
                 && priceText.Text != "" && modelCombo.SelectedValue != null)
             {
-                decimal price;
+                float price;
                 DateTime sYear;
                 DateTime eYear;
-                if (decimal.TryParse(priceText.Text, out price) &&
+                
+                if (float.TryParse(priceText.Text, out price) &&
                     DateTime.TryParseExact(yearText.Text,"yyyy", CultureInfo.InvariantCulture,DateTimeStyles.None, out sYear) &&
                     DateTime.TryParseExact(endYearText.Text, "yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out eYear))
                 {

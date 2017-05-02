@@ -44,11 +44,13 @@
             this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.objectListParts = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn13 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn7 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn8 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.objectListSelectedParts = new BrightIdeasSoftware.ObjectListView();
             this.olvColumn9 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn14 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn10 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn11 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.olvColumn12 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -56,8 +58,6 @@
             this.removeServiceButton = new System.Windows.Forms.Button();
             this.addPartButton = new System.Windows.Forms.Button();
             this.removePartButton = new System.Windows.Forms.Button();
-            this.olvColumn13 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.olvColumn14 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             ((System.ComponentModel.ISupportInitialize)(this.objectListServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectListSelectedServices)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectListParts)).BeginInit();
@@ -155,6 +155,7 @@
             // olvColumn4
             // 
             this.olvColumn4.AspectName = "PricePerHour";
+            this.olvColumn4.AspectToStringFormat = "{0:0.00}";
             this.olvColumn4.CellPadding = null;
             this.olvColumn4.Text = "Preço por hora";
             this.olvColumn4.Width = 89;
@@ -215,6 +216,12 @@
             this.olvColumn5.Text = "Nome da peça";
             this.olvColumn5.Width = 86;
             // 
+            // olvColumn13
+            // 
+            this.olvColumn13.AspectName = "Model.Name";
+            this.olvColumn13.CellPadding = null;
+            this.olvColumn13.Text = "Modelo";
+            // 
             // olvColumn7
             // 
             this.olvColumn7.AspectName = "Price";
@@ -265,6 +272,12 @@
             this.olvColumn9.CellPadding = null;
             this.olvColumn9.Text = "Nome da peça";
             this.olvColumn9.Width = 86;
+            // 
+            // olvColumn14
+            // 
+            this.olvColumn14.AspectName = "Model.Name";
+            this.olvColumn14.CellPadding = null;
+            this.olvColumn14.Text = "Modelo";
             // 
             // olvColumn10
             // 
@@ -329,18 +342,6 @@
             this.removePartButton.Text = "-";
             this.removePartButton.UseVisualStyleBackColor = true;
             this.removePartButton.Click += new System.EventHandler(this.removePartButton_Click);
-            // 
-            // olvColumn13
-            // 
-            this.olvColumn13.AspectName = "Model.Name";
-            this.olvColumn13.CellPadding = null;
-            this.olvColumn13.Text = "Modelo";
-            // 
-            // olvColumn14
-            // 
-            this.olvColumn14.AspectName = "Model.Name";
-            this.olvColumn14.CellPadding = null;
-            this.olvColumn14.Text = "Modelo";
             // 
             // MainForm
             // 

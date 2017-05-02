@@ -11,9 +11,7 @@ namespace WindowsFormsApplication1
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Model
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,9 +20,7 @@ namespace WindowsFormsApplication1
             this.Car = new HashSet<Car>();
             this.Part = new HashSet<Part>();
         }
-
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    
         public int Id { get; set; }
         public string Name { get; set; }
     

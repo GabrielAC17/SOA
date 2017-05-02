@@ -11,19 +11,15 @@ namespace WindowsFormsApplication1
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Part
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         public string Name { get; set; }
         public System.DateTime Year { get; set; }
         public System.DateTime EndYear { get; set; }
-        public decimal Price { get; set; }
-        [ForeignKey("Id")]
+        public double Price { get; set; }
+    
         public virtual Model Model { get; set; }
     }
 }

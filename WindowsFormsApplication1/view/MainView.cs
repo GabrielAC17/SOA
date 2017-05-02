@@ -111,7 +111,7 @@ namespace WindowsFormsApplication1
                 }
                 objectListSelectedServices.SetObjects(SelectedServiceController.SelectedServiceC.Services);
                 Singleton.updateTotal();
-                labelTotal.Text = Singleton.Total.ToString();
+                labelTotal.Text = Singleton.Total.ToString("0.00");
             }
         }
 
@@ -125,7 +125,7 @@ namespace WindowsFormsApplication1
                 }
                 objectListSelectedServices.SetObjects(SelectedServiceController.SelectedServiceC.Services);
                 Singleton.updateTotal();
-                labelTotal.Text = Singleton.Total.ToString();
+                labelTotal.Text = Singleton.Total.ToString("0.00");
             }
         }
 
@@ -139,7 +139,7 @@ namespace WindowsFormsApplication1
                 }
                 objectListSelectedParts.SetObjects(SelectedPartController.SelectedPartC.Parts);
                 Singleton.updateTotal();
-                labelTotal.Text = Singleton.Total.ToString();
+                labelTotal.Text = Singleton.Total.ToString("0.00");
             }
         }
 
@@ -153,7 +153,7 @@ namespace WindowsFormsApplication1
                 }
                 objectListSelectedParts.SetObjects(SelectedPartController.SelectedPartC.Parts);
                 Singleton.updateTotal();
-                labelTotal.Text = Singleton.Total.ToString();
+                labelTotal.Text = Singleton.Total.ToString("0.00");
             }
         }
 

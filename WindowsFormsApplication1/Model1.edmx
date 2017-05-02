@@ -41,7 +41,7 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="PricePerHour" Type="decimal" Nullable="false" />
+    <Property Name="PricePerHour" Type="float" Nullable="false" />
   </EntityType>
   <EntityType Name="PartSet">
     <Key>
@@ -51,7 +51,7 @@
     <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
     <Property Name="Year" Type="datetime" Nullable="false" />
     <Property Name="EndYear" Type="datetime" Nullable="false" />
-    <Property Name="Price" Type="decimal" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
     <Property Name="Model_Id" Type="int" Nullable="false" />
   </EntityType>
   <Association Name="ModelCar">
@@ -120,7 +120,7 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" />
-          <Property Name="PricePerHour" Type="Decimal" Nullable="false" />
+          <Property Name="PricePerHour" Type="Double" Nullable="false" />
         </EntityType>
         <Association Name="ModelCar">
           <End Type="Model1.Model" Role="Model" Multiplicity="1" />
@@ -135,7 +135,7 @@
           <Property Name="Year" Type="DateTime" Nullable="false" />
           <Property Name="EndYear" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="Model" Relationship="Model1.ModelPart" FromRole="Part" ToRole="Model" />
-          <Property Name="Price" Type="Decimal" Nullable="false" />
+          <Property Name="Price" Type="Double" Nullable="false" />
         </EntityType>
         <Association Name="ModelPart">
           <End Type="Model1.Model" Role="Model" Multiplicity="1" />
@@ -167,20 +167,20 @@
     <EntitySetMapping Name="ServiceSet">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.Service)">
         <MappingFragment StoreEntitySet="ServiceSet">
-                <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="PricePerHour" ColumnName="PricePerHour" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PartSet">
       <EntityTypeMapping TypeName="IsTypeOf(Model1.Part)">
         <MappingFragment StoreEntitySet="PartSet">
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Year" ColumnName="Year" />
           <ScalarProperty Name="EndYear" ColumnName="EndYear" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

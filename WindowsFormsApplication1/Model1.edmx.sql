@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/30/2017 21:14:31
--- Generated from EDMX file: C:\Users\jujub\Desktop\Prog III Gabriel\WindowsFormsApplication1\WindowsFormsApplication1\Model1.edmx
+-- Date Created: 05/02/2017 17:07:58
+-- Generated from EDMX file: C:\Users\gabri\Desktop\Positivo\Programação III\WindowsFormsApplication1\WindowsFormsApplication1\Model1.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,29 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_ModelCar]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[CarSet] DROP CONSTRAINT [FK_ModelCar];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ModelPart]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PartSet] DROP CONSTRAINT [FK_ModelPart];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[CarSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[CarSet];
+GO
+IF OBJECT_ID(N'[dbo].[ModelSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ModelSet];
+GO
+IF OBJECT_ID(N'[dbo].[ServiceSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ServiceSet];
+GO
+IF OBJECT_ID(N'[dbo].[PartSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PartSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -47,7 +65,7 @@ GO
 CREATE TABLE [dbo].[ServiceSet] (
     [Id] int IDENTITY(1,1) NOT NULL,
     [Name] nvarchar(max)  NOT NULL,
-    [PricePerHour] decimal(18,0)  NOT NULL
+    [PricePerHour] float  NOT NULL
 );
 GO
 
@@ -57,7 +75,7 @@ CREATE TABLE [dbo].[PartSet] (
     [Name] nvarchar(max)  NOT NULL,
     [Year] datetime  NOT NULL,
     [EndYear] datetime  NOT NULL,
-    [Price] decimal(18,0)  NOT NULL,
+    [Price] float  NOT NULL,
     [Model_Id] int  NOT NULL
 );
 GO
